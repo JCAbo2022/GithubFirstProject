@@ -12,5 +12,6 @@ public class GitAndIdea {
         System.out.println("hot-fix修改打印IDEA结合git一起使用的演示！！！！！！！！！");
         System.out.println("push test!!!!!!!!");
         System.out.println("pull test!!!!!!!!");
+        System.out.println("gitee test!!!!!!!!");
     }
 }
