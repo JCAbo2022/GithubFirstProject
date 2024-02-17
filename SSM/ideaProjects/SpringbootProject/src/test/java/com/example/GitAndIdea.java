@@ -8,6 +8,6 @@ public class GitAndIdea {
         System.out.println("打印IDEA结合git一起使用的演示！！！！！！！！！");
         System.out.println("打印IDEA结合git一起使用的演示！！！！！！！！！");
         System.out.println("打印IDEA结合git一起使用的演示！！！！！！！！！");
-        System.out.println("打印IDEA结合git一起使用的演示！！！！！！！！！");
+        System.out.println("master修改打印IDEA结合git一起使用的演示！！！！！！！！！");
     }
 }
