@@ -12,7 +12,7 @@ Content-Type: application/json
   "id": 3,
   "image": "https://web-framework.oss-changzhou.aliyuncs.com/2022-09-03-07-37-38222.jpg",
   "username": "zhouyi",
-  "name": "ÖÜìÚ",
+  "name": "å‘¨ç† ",
   "gender": 1,
   "job": 1,
   "entrydate": "2022-09-18",
@@ -31,5 +31,10 @@ Content-Type: application/json
   "username": "zhoujianbo",
   "password": "123456"
 }
+
+###
+
+GET http://localhost:8080/upload.html
+Content-Type: application/json
 
 ###

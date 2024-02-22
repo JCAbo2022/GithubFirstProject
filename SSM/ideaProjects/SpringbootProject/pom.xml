@@ -74,6 +74,20 @@
             <artifactId>spring-boot-configuration-processor</artifactId>
         </dependency>
 
+        <!--JWT令牌-->
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt</artifactId>
+            <version>0.9.1</version>
+        </dependency>
+
+        <!--fastJSON(用于将对象转换成json类型数据)-->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.76</version>
+        </dependency>
+
     </dependencies>
     <dependencyManagement>
         <dependencies>
