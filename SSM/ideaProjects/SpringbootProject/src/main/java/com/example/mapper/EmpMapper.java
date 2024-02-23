@@ -48,4 +48,11 @@ public interface EmpMapper {
     /*根据用户名和密码查询用户实现登录*/
     @Select("select * from emp where username = #{username} and password = #{password}")
     Emp getByUsernameAndPassword(Emp emp);
+
+    /**
+     * 根据部门id删除该部门下的员工数据
+     * @param id
+     */
+    @Delete("delete from emp where dept_id = #{id}")
+    void deletByDeptId(Integer id);
 }

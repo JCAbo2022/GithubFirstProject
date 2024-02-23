@@ -3,6 +3,7 @@ package com.example.controller;
 import com.example.pojo.Dept;
 import com.example.pojo.Result;
 import com.example.service.DeptService;
+import com.example.service.EmpService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -15,6 +16,8 @@ import java.util.List;
 public class DeptController {
     @Autowired
     private DeptService deptService;
+    @Autowired
+    private EmpService empService;
 
     @GetMapping
     public Result list(){
@@ -31,9 +34,12 @@ public class DeptController {
     }
 
     @DeleteMapping("/{id}")
-    public Result delete(@PathVariable Integer id){
+    public Result delete(@PathVariable Integer id) throws Exception {
         log.info("根据指定id: " + id + " 删除指定部门");
         deptService.deleteById(id);
+
+        empService.deleteByDeptId(id);
+
         return Result.success();
     }
 

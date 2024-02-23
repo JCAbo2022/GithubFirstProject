@@ -10,7 +10,7 @@ public interface DeptService {
     * */
     public List<Dept> list();
 
-    public void deleteById(Integer id);
+    public void deleteById(Integer id) throws Exception;
 
     public void add(Dept dept);
 

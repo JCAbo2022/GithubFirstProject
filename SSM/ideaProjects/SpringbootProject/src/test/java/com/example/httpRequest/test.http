@@ -34,7 +34,7 @@ Content-Type: application/json
 
 ###
 
-GET http://localhost:8080/upload.html
+DELETE http://localhost:8080/depts/2
 Content-Type: application/json
 
 ###

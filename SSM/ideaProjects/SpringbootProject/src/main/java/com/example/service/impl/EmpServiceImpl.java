@@ -98,6 +98,11 @@ public class EmpServiceImpl implements EmpService {
     @Override
     public Emp login(Emp emp){
         return empMapper.getByUsernameAndPassword(emp);
-    };
+    }
+
+    @Override
+    public void deleteByDeptId(Integer id) {
+        empMapper.deletByDeptId(id);
+    }
 
 }
