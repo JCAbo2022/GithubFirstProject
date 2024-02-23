@@ -1,17 +1,25 @@
 package com.example;
 
+import com.example.controller.DeptController;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import org.dom4j.Document;
+import org.dom4j.Element;
+import org.dom4j.io.SAXReader;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.Bean;
 
+import javax.xml.parsers.SAXParser;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-//@SpringBootTest
+@SpringBootTest
 class SpringbootProjectApplicationTests {
 
     @Test
@@ -27,7 +35,7 @@ class SpringbootProjectApplicationTests {
     }
 
     /*
-        Éú³ÉJWT
+        ç”ŸæˆJWT
      */
     @Test
     public void testJWT(){
@@ -36,23 +44,67 @@ class SpringbootProjectApplicationTests {
         claims.put("id", 1);
         claims.put("username", "zhoujianbo");
         String jwt = Jwts.builder()
-                .setClaims(claims)//ÉèÖÃ×Ô¶¨ÒåÄÚÈİ£¨ÔØºÉ£©
-                .signWith(SignatureAlgorithm.HS256, "zhoujianbo")//Ö¸¶¨Ç©ÃûËã·¨ºÍÃÜÔ¿Îªzhoujianbo
-                .setExpiration(new Date(System.currentTimeMillis() + 24 * 3600 * 100))//ÉèÖÃÓĞĞ§ÆÚ
+                .setClaims(claims)//è®¾ç½®è‡ªå®šä¹‰å†…å®¹ï¼ˆè½½è·ï¼‰
+                .signWith(SignatureAlgorithm.HS256, "zhoujianbo")//æŒ‡å®šç­¾åç®—æ³•å’Œå¯†é’¥ä¸ºzhoujianbo
+                .setExpiration(new Date(System.currentTimeMillis() + 24 * 3600 * 100))//è®¾ç½®æœ‰æ•ˆæœŸ
                 .compact();
         System.out.println(jwt);
     }
 
     /*
-        ½âÎöJWT
+        è§£æJWT
     */
     @Test
     public void testParseJWT(){
         Claims claims = Jwts.parser()
-                .setSigningKey("zhoujianbo")//ÉèÖÃ½âÎöÃÜÔ¿£¨Í¬Éú³ÉÊ±Ê¹ÓÃµÄÃÜÔ¿£©
+                .setSigningKey("zhoujianbo")//è®¾ç½®è§£æå¯†é’¥ï¼ˆåŒç”Ÿæˆæ—¶ä½¿ç”¨çš„å¯†é’¥ï¼‰
                 .parseClaimsJws("eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZXhwIjoxNzA4Mjc4MjMxLCJ1c2VybmFtZSI6Inpob3VqaWFuYm8ifQ.ri7JadkldH-5Vq6APYKRBUcT2vvUxBGFikx2Qre2xpw")
                 .getBody();
         System.out.println(claims);
+    }
+
+    @Autowired
+    private ApplicationContext applicationContext;
+    /**
+     * beançš„è·å–
+     */
+    @Test
+    public void testGetBean(){
+        //æ ¹æ®nameè·å–bean
+        DeptController bean1 = (DeptController) applicationContext.getBean("deptController");
+        System.out.println(bean1);
+
+        //æ ¹æ®ç±»å‹è·å–bean
+        DeptController bean2 = (DeptController) applicationContext.getBean(DeptController.class);
+        System.out.println(bean2);
+
+        //æ ¹æ®nameå’Œç±»å‹è·å–bean
+        DeptController bean3 = (DeptController) applicationContext.getBean("deptController", DeptController.class);
+        System.out.println(bean3);
+
+    }
+
+    @Autowired
+    private SAXReader saxReader;
+
+    //ç¬¬ä¸‰æ–¹beançš„ç®¡ç†
+    @Test
+    public void testThirdBean() throws Exception {
+        //SAXReader saxReader = new SAXReader();
+
+        Document document = saxReader.read(this.getClass().getClassLoader().getResource("1.xml"));
+        Element rootElement = document.getRootElement();
+        String name = rootElement.element("name").getText();
+        String age = rootElement.element("age").getText();
+
+        System.out.println(name + " : " + age);
+    }
+
+
+    @Test
+    public void testGetBean2(){
+        Object saxReader = applicationContext.getBean("reader");
+        System.out.println(saxReader);
     }
 
 }
