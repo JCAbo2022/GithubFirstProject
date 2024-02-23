@@ -1,5 +1,7 @@
 package com.example.controller;
 
+import com.example.annotation.MyLog;
+import com.example.aop.MyAnnotation;
 import com.example.pojo.Emp;
 import com.example.pojo.PageBean;
 import com.example.pojo.Result;
@@ -43,6 +45,8 @@ public class EmpController {
 
     /*新增员工*/
     @PostMapping
+    @MyAnnotation
+    @MyLog
     public Result save(@RequestBody Emp emp){
         //记录日志
         log.info("新增员工，emp:{}", emp);
@@ -73,6 +77,7 @@ public class EmpController {
 
     /*批量删除*/
     @DeleteMapping("/{ids}")
+    @MyLog
     public Result deleteByIds(@PathVariable List<Integer> ids){
         log.info("批量删除ids:{}", ids);
         empService.deleteByIds(ids);
@@ -87,6 +92,7 @@ public class EmpController {
     }
 
     @PutMapping
+    @MyLog
     public Result update(@RequestBody Emp emp){
         log.info("更新员工信息为{}", emp);
         empService.update(emp);

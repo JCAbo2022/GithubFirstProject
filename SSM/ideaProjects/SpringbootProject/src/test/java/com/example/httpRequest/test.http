@@ -5,13 +5,13 @@ Content-Type: application/json
 <> 2024-02-11T143913.200.json
 
 ###
-PUT http://localhost:8080/emps
+POST http://localhost:8080/emps
 Content-Type: application/json
 
 {
   "id": 3,
   "image": "https://web-framework.oss-changzhou.aliyuncs.com/2022-09-03-07-37-38222.jpg",
-  "username": "zhouyi",
+  "username": "zhouyi5",
   "name": "周熠",
   "gender": 1,
   "job": 1,

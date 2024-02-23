@@ -1,5 +1,6 @@
 package com.example.controller;
 
+import com.example.aop.MyAnnotation;
 import com.example.pojo.Emp;
 import com.example.pojo.Result;
 import com.example.service.EmpService;
@@ -20,6 +21,7 @@ public class LoginController {
     private EmpService empService;
 
     @PostMapping("/login")
+    @MyAnnotation
     public Result login(@RequestBody Emp emp){
         log.info("员工登录信息：{}", emp);
         Emp e = empService.login(emp);
